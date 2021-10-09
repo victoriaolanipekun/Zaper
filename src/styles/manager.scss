@@ -1,0 +1,63 @@
+.menu {
+  background-color: #6D0069;
+  width: 199px;
+  height: 900px;
+  left: 0px;
+  top: 0px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+}
+
+.logo {
+  position: absolute;
+  width: 83px;
+  height: 45px;
+  left: 51px;
+  top: 12px;
+}
+
+.navigation {
+  position: absolute;
+  width: 100%;
+  height: 299px;
+  left: 43px;
+  top: 155px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.menu-list {
+  padding-top: 50px;
+}
+
+.header {
+
+  .search {
+    left: 30px;
+    top: 23px;
+
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 22px;
+    max-width: 288px !important;
+    border-top-right-radius: 22px !important;
+    border-bottom-right-radius: 22px !important;
+  }
+
+  .search::placeholder {
+    position: absolute;
+    height: 19px;
+    left: 20px;
+    right: 67.43%;
+    top: 15px;
+    width: 100%;
+
+    color: #8B8B8B;
+  } 
+
+  .search-icon {
+    margin-top: 40px;
+    z-index: 4;
+    color: #8B8B8B;
+    margin-bottom: -5px;
+  }
+}
