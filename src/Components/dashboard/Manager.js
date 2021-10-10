@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Menu from '../common/Menu'
 import Header from '../common/Header'
@@ -11,18 +12,23 @@ import profile from '../../assets/profile.png'
 
 const Manager = () => {
 
+  const history = useHistory()
+
   const [employees, setEmployees] = useState([])
   const [hasError, setHasError] = useState(false)
+  const [employee, setEmployee] = useState({
+    id: '',
+    name: '', 
+    age: '',
+    salary: '',
+  })
 
   // API request
   useEffect(() => {
     const getEmployees = async () => {
       try {
         const { data }  = await axios.get('http://dummy.restapiexample.com/api/v1/employees')
-        // if (data.data.length > 0) {
         setEmployees(data.data)
-        //}
-        //return data
       } catch (err) {
         setHasError(true)
       }
@@ -30,7 +36,60 @@ const Manager = () => {
     getEmployees()
   }, [])
 
-  console.log('employees', employees)
+  const editHandle = (id, name, age, salary) => {
+    setEmployee({ 'id': id, 'name': name, 'age': age, 'salary': salary })
+  }
+
+
+  // Edit Data Enpoint & State
+  //const { id } = useParams()
+
+  const [employeeData, setEmployeeData] = useState({ 
+    employee_name: '', 
+    employee_age: '', 
+    emloyee_salary: '',
+  })
+
+  const [errors, setErrors] = useState({ 
+    employee_name: '', 
+    employee_age: '', 
+    employee_salary: '',
+  })
+
+
+  useEffect(() => {
+    const getData = async () => {
+
+      const { data } = await axios.get(`http://dummy.restapiexample.com/api/v1/employee/${employee.id}`)
+
+      console.log('Employee=>', data.data)
+      setEmployeeData(data.data)
+    }
+    getData()
+  }, [employee.id])  
+
+  const handleChange = (event) => {
+    const myForm = { ...employeeData, [event.target.name]: event.target.value }
+    const newErrors = { ...errors, [event.target.name]: '' }
+    setEmployeeData(myForm)
+    setErrors(newErrors)
+  }
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await axios.put(
+        `http://dummy.restapiexample.com/api/v1/update/${employee.id}`,
+        employeeData
+      )
+      
+      //history.push('/manager')
+    } catch (err) {
+      console.log('Error=>', err)
+      setErrors(err)
+    }
+  }
 
   return (
     <>
@@ -60,7 +119,7 @@ const Manager = () => {
                         <td>{employee.employee_name}</td>
                         <td>{employee.employee_age}</td>
                         <td>{employee.employee_salary}</td>
-                        <td><button className='edit' data-id='`{employee.id}`' role='button' data-toggle='modal' data-target='#editModal'>Edit</button>&nbsp;<button className='delete' role="button" data-toggle='modal' data-target='#deleteModal'>Delete</button></td>
+                        <td><button className='edit' role='button' data-toggle='modal' data-target='#editModal' onClick={() => editHandle(employee.id, employee.employee_name, employee.employee_age, employee.employee_salary)}>Edit</button>&nbsp;<button className='delete' role="button" data-toggle='modal' data-target='#deleteModal'>Delete</button></td>
                       </tr>
                     })}
                   </tbody>
@@ -78,7 +137,17 @@ const Manager = () => {
           </div>
         </div>  
       </div>
-      <Edit />
+      <Edit 
+        employeeData={employeeData}
+        errors={errors}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        buttonText="Update Employee"
+        // id={employee.id} 
+        // name={employee.name} 
+        // age={employee.age} 
+        // salary={employee.salary}
+      />
       <Delete />
       <Create />
     </>
