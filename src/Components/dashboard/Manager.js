@@ -16,12 +16,15 @@ const Manager = () => {
 
   const [employees, setEmployees] = useState([])
   const [hasError, setHasError] = useState(false)
+  const [deleteId, setDelete] = useState(false)
+  const [deleteStatus, setDeleteStatus] = useState(0)
   const [employee, setEmployee] = useState({
     id: '',
     name: '', 
     age: '',
     salary: '',
   })
+  
 
   // API request
   useEffect(() => {
@@ -38,6 +41,10 @@ const Manager = () => {
 
   const editHandle = (id, name, age, salary) => {
     setEmployee({ 'id': id, 'name': name, 'age': age, 'salary': salary })
+  }
+
+  const deleteHandle = (id) => {
+    setDelete(id)
   }
 
 
@@ -83,12 +90,27 @@ const Manager = () => {
         `http://dummy.restapiexample.com/api/v1/update/${employee.id}`,
         employeeData
       )
-      
+
       //history.push('/manager')
     } catch (err) {
       console.log('Error=>', err)
       setErrors(err)
     }
+  }
+
+  const handleDelete = (event) => {
+    console.log('changed=>', event.target.value)
+    const getDelete = async () => {
+      const { data } = await axios.delete(`http://dummy.restapiexample.com/api/v1/delete/${event.target.value}`)
+      console.log('MYDATA', data)
+      if (data.status === 'success') {
+        setDeleteStatus(1)
+        const { data } = await axios.get('http://dummy.restapiexample.com/api/v1/employees')
+        console.log('RESULT', data)
+        setEmployees(data.data)
+      }
+    }
+    getDelete()
   }
 
   return (
@@ -119,7 +141,7 @@ const Manager = () => {
                         <td>{employee.employee_name}</td>
                         <td>{employee.employee_age}</td>
                         <td>{employee.employee_salary}</td>
-                        <td><button className='edit' role='button' data-toggle='modal' data-target='#editModal' onClick={() => editHandle(employee.id, employee.employee_name, employee.employee_age, employee.employee_salary)}>Edit</button>&nbsp;<button className='delete' role="button" data-toggle='modal' data-target='#deleteModal'>Delete</button></td>
+                        <td><button className='edit' role='button' data-toggle='modal' data-target='#editModal' onClick={() => editHandle(employee.id, employee.employee_name, employee.employee_age, employee.employee_salary)}>Edit</button>&nbsp;<button className='delete' role="button" data-toggle='modal' data-target='#deleteModal' onClick={() => deleteHandle(employee.id)}>Delete</button></td>
                       </tr>
                     })}
                   </tbody>
@@ -148,7 +170,11 @@ const Manager = () => {
         // age={employee.age} 
         // salary={employee.salary}
       />
-      <Delete />
+      <Delete 
+        handleDelete={handleDelete} 
+        deleteId={deleteId}
+        deleteStatus={deleteStatus}
+      />
       <Create />
     </>
   )

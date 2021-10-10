@@ -1,9 +1,13 @@
 import React from 'react'
 
-const Delete = () => {
+const Delete = ({
+  handleDelete,
+  deleteId,
+  deleteStatus,
+}) => {
 
   return (
-    <div>
+    <div className='delete_form'>
       <div className="modal fade" id="deleteModal" tabIndex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
@@ -12,11 +16,16 @@ const Delete = () => {
               <button type="button" className="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
+              {deleteStatus === 1 ? 
+                <div className='alert alert-success'>Employee has been deleted!</div>
+                :
+                ''
+              }
               Are you sure you want to delete this employee?
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
-              <button type="button" className="btn btn-primary">Yes - Delete</button>
+              <button type="button" className="btn submit" value={deleteId} onClick={handleDelete}>Yes - Delete</button>
             </div>
           </div>
         </div>
