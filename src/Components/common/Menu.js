@@ -8,7 +8,7 @@ const Menu = () => {
       <div><img src={logo} className='logo'/></div>
       <div className='navigation'>
         <div className='menu-list'><i className='fas fa-th-large'></i> &nbsp;Dashboard</div>
-        <div className='menu-list'><i className='fas fa-user-plus'></i> Create Employee</div>
+        <div className='menu-list'><i className='fas fa-user-plus'></i> <a href='#' role="button" data-toggle='modal' data-target='#createModal'>Create Employee</a></div>
         <div className='menu-list'><i className='fas fa-cog'></i> &nbsp;Settings</div>
         <div className='menu-list'><i className='fas fa-user'></i> &nbsp;My Profile</div>
       </div>
