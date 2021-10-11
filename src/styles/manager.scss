@@ -2,12 +2,13 @@
   background: #F7EFE7;
 
   .menu {
+    position: sticky;
     background-color: #6D0069;
     width: 199px;
     height: 900px;
     left: 0px;
     top: 0px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   }
   
   .logo {

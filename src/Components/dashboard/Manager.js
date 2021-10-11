@@ -118,7 +118,7 @@ const Manager = () => {
       <div className='container-fluid manager'>
         <div className='row'>
           <div className='col-md-2 col-sm-2 menu'><Menu /></div>
-          <div className='col-md-10 col-sm-10'>
+          <div className='col-md-10 col-sm-10 content'>
             <Header />
             
             <div className='main'>
