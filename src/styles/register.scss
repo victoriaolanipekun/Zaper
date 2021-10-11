@@ -1,0 +1,199 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  background: #EDE3E3;
+}
+
+.registration {
+
+  .menu {
+    margin-top: 10px;
+
+    .nav-item {
+      padding-right: 20px;
+    }
+    
+    .nav-link {
+      
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 24px;
+
+      color: #260D26;
+    }
+
+    .register {
+      border: 1px solid #6D0069;
+      box-sizing: border-box;
+      border-radius: 4px;
+      width: 150px;
+      height: 38px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #ffffff;
+      background: #6D0069;
+      cursor: pointer;
+    }
+  }
+
+  .signup {
+    .styling {
+      position: absolute;
+      width: 232px;
+      height: 153px;
+      left: 373.67px;
+      top: 101px;
+
+      background: #6D0069;
+      border-radius: 50px 0px;
+      transform: rotate(79.99deg);
+    }
+
+    .bottomStyling {
+      position: absolute;
+      width: 232px;
+      height: 153px;
+      left: 890px;
+      top: 630.59px;
+
+      background: #C4C4C4;
+      border-radius: 50px 0px;
+      transform: rotate(80.62deg);
+    }
+
+    .start {
+      top: 100px;
+      display: flex;
+      justify-content: center;
+
+      
+
+      .getStarted {
+        width: 562px;
+        height: 761px;
+        left: 329px;
+        top: 240px;
+        background: #F9F9F9;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 4px;
+        margin-bottom: 50px;
+  
+        h3 {
+          font-style: normal;
+          font-weight: 800;
+          font-size: 36px;
+          line-height: 46px;
+          color: #260D26;
+          display: flex;
+          justify-content: center;
+          padding-top: 64px;
+        }
+  
+        .google{
+          padding: 24px;
+          .email {
+            margin-left: 160px;
+            hr {
+              margin-left: -157px;
+            }
+          }
+          .formInput {
+            margin-top: -13px;
+            .input {
+              display: flex;
+              margin-top: 20px;
+              height: 48px;
+              margin-bottom: 40px;
+            }
+            input {
+              margin-top: 20px;
+              height: 48px;
+            }
+          }
+          .signup_btn {
+            height: 56px;
+            left: 31.11%;
+            right: 33.61%;
+            top: 694px;
+            background: #6D0069;
+            border-radius: 4px;
+            border: none;
+            width: 513px;
+            font-style: normal;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            color: #FFFFFF;
+            margin-top: 30px;
+          }
+        }
+        
+        .btn {
+          background:  #ffffff;
+          border-radius: 4px;
+          width: 512px;
+          height: 56px;
+          color: #6D0069;
+          font-weight: 800;
+          font-size: 16px;
+          background-image: url(../assets/Google.png);
+          background-repeat: no-repeat;
+          background-position: 12px 11px;
+          
+          &:hover {
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+          }
+          
+          &:active {
+            background-color: #2365f5;
+          }
+          
+          &:focus {
+            outline: none;
+            box-shadow: 
+              0 -1px 0 rgba(0, 0, 0, .04),
+              0 2px 4px rgba(0, 0, 0, .25),
+              0 0 0 3px #cfdefa;
+          }
+        }
+
+        h4 {
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 24px;
+          text-align: center;
+          color: #260D26;
+
+          a {
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+
+  .testimonial {
+    .quote {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      left: 690px;
+      top: 569px;
+    }
+    h4 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 24px;
+      text-align: center;
+      color: #260D26;
+      top: 617px;
+      margin-top: 280px;
+      margin-left: 541px;
+      width: 337px;
+    }
+  }
+}

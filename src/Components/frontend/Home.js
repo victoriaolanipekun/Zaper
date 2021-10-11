@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Nav from '../common/Nav'
 import heroImage from '../../assets/HeroImage.png'
 import bgImage from '../../assets/BgImage.png'
@@ -21,7 +22,7 @@ const Home = () => {
             <h4><span>75%</span> &nbsp;of managers depend on Zaper to get work done</h4>
             <h2>Manage your team <br/>members data.</h2>
             <h1>Data Driven</h1>
-            <button className='get-started'>Get started for free</button>
+            <Link to='/onboarding'><button className='get-started'>Get started for free</button></Link>
           </div>
           <div className='bg_img'>
             <img src={bgImage}  />
