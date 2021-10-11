@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+//import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Menu from '../common/Menu'
 import Header from '../common/Header'
@@ -12,7 +12,7 @@ import profile from '../../assets/profile.png'
 
 const Manager = () => {
 
-  const history = useHistory()
+  //const history = useHistory()
 
   const [employees, setEmployees] = useState([])
   const [hasError, setHasError] = useState(false)
@@ -158,24 +158,24 @@ const Manager = () => {
             </div>
           </div>
         </div>  
+        <Edit 
+          employeeData={employeeData}
+          errors={errors}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          buttonText="Update Employee"
+          // id={employee.id} 
+          // name={employee.name} 
+          // age={employee.age} 
+          // salary={employee.salary}
+        />
+        <Delete 
+          handleDelete={handleDelete} 
+          deleteId={deleteId}
+          deleteStatus={deleteStatus}
+        />
+        <Create />
       </div>
-      <Edit 
-        employeeData={employeeData}
-        errors={errors}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        buttonText="Update Employee"
-        // id={employee.id} 
-        // name={employee.name} 
-        // age={employee.age} 
-        // salary={employee.salary}
-      />
-      <Delete 
-        handleDelete={handleDelete} 
-        deleteId={deleteId}
-        deleteStatus={deleteStatus}
-      />
-      <Create />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Home from './Components/common/Home.js'
+import Home from './Components/frontend/Home.js'
 import Manager from './Components/dashboard/Manager.js'
 
 const App = () => {
