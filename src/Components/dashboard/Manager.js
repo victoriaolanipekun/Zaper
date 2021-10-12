@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 //import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Menu from '../common/Menu'
@@ -9,6 +10,7 @@ import Create from './Create'
 
 // Static image for profile rendering
 import profile from '../../assets/profile.png'
+import logo from '../../assets/Logo2.png'
 
 const Manager = () => {
 
@@ -58,7 +60,7 @@ const Manager = () => {
     setSuccess('')
     setHasError('')
     setDeleteStatus(0)
-    
+
     setDelete(id)
   }
 
@@ -178,15 +180,21 @@ const Manager = () => {
 
   return (
     <>
+      <header className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow overall">
+        <Link to='/manager' className="navbar-brand col-md-3 col-lg-2 me-0 px-3"><img src={logo} className='logo'/></Link>
+        <button className="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+      </header>
       <div className='container-fluid manager'>
         <div className='row'>
-          <div className='col-md-2 col-sm-2 menu'><Menu /></div>
-          <div className='col-md-10 col-sm-10 content'>
+          <Menu />
+          <div className='col-md-10 col-sm-12 content'>
             <Header />
             
             <div className='main'>
               <h4>General Employees</h4>
-              <table className="table">
+              <table className="table table-responsive">
                 <thead className="">
                   <tr>
                     <td>Images</td>

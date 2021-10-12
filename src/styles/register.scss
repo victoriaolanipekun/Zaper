@@ -4,12 +4,6 @@ html, body {
   background: #EDE3E3;
 }
 
-@mixin mobile {
-  @media (max-width: #{$width}) {
-    @content
-  }
-};
-
 
 .registration {
 

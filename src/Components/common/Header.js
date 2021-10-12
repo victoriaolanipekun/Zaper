@@ -11,7 +11,7 @@ const Header = () => {
         </div>
       </div>
       <div className='col-md-6'>
-        <div className='profile text-right'>
+        <div className='profile'>
           <img src={profile} className='profile_pic' />
           <span>Welcome Cecilia</span>
         </div>

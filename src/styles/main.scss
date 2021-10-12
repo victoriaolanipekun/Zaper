@@ -4,6 +4,14 @@ html, body {
   font-family: 'Assistant', sans-serif;
 }
 
+$width: 576px;
+
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+};
+
 @import 'manager';
 @import 'home';
 @import 'onboarding';
