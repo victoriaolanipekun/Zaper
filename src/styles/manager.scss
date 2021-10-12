@@ -1,3 +1,8 @@
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
 .overall {
   display: none !important;
 
@@ -9,16 +14,26 @@
     background-color: #6D0069;
     box-shadow: inset -1px 0 0 #000;
   }
-  
-  .navbar .navbar-toggler {
-    top: .25rem;
-    right: 1rem;
-  }
+
 }
 
 @media (max-width: 576px) {
   .overall {
     display: block !important;
+
+    .navbar-brand {
+      min-width: 100%;
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      font-size: 1rem;
+      background-color: #6D0069;
+      box-shadow: inset -1px 0 0 #000;
+    }
+    
+    .navbar .navbar-toggler {
+      top: .25rem;
+      right: 1rem;
+    }
   }
 }
 
