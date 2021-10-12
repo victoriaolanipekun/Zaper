@@ -4,6 +4,13 @@ html, body {
   background: #EDE3E3;
 }
 
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+};
+
+
 .registration {
 
   .menu {
@@ -174,26 +181,36 @@ html, body {
       }
     }
   }
+}
 
-  .testimonial {
-    .quote {
-      position: absolute;
-      width: 32px;
-      height: 32px;
-      left: 690px;
-      top: 569px;
-    }
-    h4 {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 24px;
-      text-align: center;
-      color: #260D26;
-      top: 617px;
-      margin-top: 280px;
-      margin-left: 541px;
-      width: 337px;
+@media (max-width: 576px) {
+  .registration {
+    .signup {
+      .styling {
+        display: none;
+      }
+      .bottomStyling {
+        display: none;
+      }
+      .start {
+        .getStarted {
+          width: 314px;
+          .btn {
+            width: 265px;
+          }
+          .google {
+            .email {
+              margin-left: 0;
+              .hr{
+                margin-left: 0;
+              }
+            }
+            .signup_btn {
+              width: 265px;
+            }
+          }
+        }
+      }
     }
   }
 }

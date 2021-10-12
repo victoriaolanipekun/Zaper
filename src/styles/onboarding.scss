@@ -3,6 +3,13 @@ html, body {
   width: 100%;
 }
 
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+};
+
+
 .onboarding {
   background: #EDE3E3;
   height: 100vh;
@@ -79,11 +86,13 @@ html, body {
   }
 
   .testimonial {
+    display: flex;
+    justify-content: center;
     .quote {
       position: absolute;
       width: 32px;
       height: 32px;
-      left: 690px;
+      //left: 690px;
       top: 569px;
     }
     h4 {
@@ -95,8 +104,40 @@ html, body {
       color: #260D26;
       top: 617px;
       margin-top: 280px;
-      margin-left: 541px;
+      // margin-left: 541px;
       width: 337px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .onboarding {
+    .questionnaire {
+      .team {
+        top: 120px;
+      }
+      .member { 
+        .btn {
+          flex-direction: column;
+          padding: inherit;
+          margin-top: 10px;      
+        }
+        h4 {
+        text-align: center;
+        }
+        button {
+          height: 63px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .testimonial {
+      .quote {
+        top: 509px;
+      }
+      h4 {
+        margin-top: 260px;
+      }
     }
   }
 }
