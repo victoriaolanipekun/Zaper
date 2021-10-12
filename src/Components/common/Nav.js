@@ -15,7 +15,7 @@ const Nav = () => {
         </button>
         <div className='col-10 menu'>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className='col-6'>
+            <div className='col-md-6 col-sm-12'>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <a className="nav-link active" aria-current="page" href="#">Product</a>
@@ -33,8 +33,8 @@ const Nav = () => {
                 </li>
               </ul>
             </div>
-            <div className='col-6'>
-              <div className="d-flex float-right">
+            <div className='col-md-6 col-sm-12'>
+              <div className="head-buttons">
                 <Link to='/login' className="nav-link active" aria-current="page">Login</Link>
                 <Link to='/onboarding'><button className="btn register" type="button">Try for free</button></Link>
               </div>
