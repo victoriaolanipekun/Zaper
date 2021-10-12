@@ -3,6 +3,14 @@ html, body {
   width: 100%;
 }
 
+$width: 576px;
+
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+}
+
 .home {
   background: #F7EFE7;
   height: 100%;
@@ -103,5 +111,11 @@ html, body {
       display: flex;
       justify-content: flex-end;
     }
+  }
+}
+
+@media (max-width: 576px) {
+  .home {
+    width: 675px;
   }
 }
