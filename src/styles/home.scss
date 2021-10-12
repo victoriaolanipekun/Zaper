@@ -9,7 +9,7 @@ $width: 576px;
   @media (max-width: #{$width}) {
     @content
   }
-}
+};
 
 .home {
   background: #F7EFE7;
