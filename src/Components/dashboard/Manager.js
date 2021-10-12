@@ -15,7 +15,8 @@ const Manager = () => {
   //const history = useHistory()
 
   const [employees, setEmployees] = useState([])
-  const [hasError, setHasError] = useState(false)
+  const [hasError, setHasError] = useState('')
+  const [success, setSuccess] = useState('')
   const [deleteId, setDelete] = useState(false)
   const [deleteStatus, setDeleteStatus] = useState(0)
   const [employee, setEmployee] = useState({
@@ -24,26 +25,40 @@ const Manager = () => {
     age: '',
     salary: '',
   })
-  
 
   // API request
   useEffect(() => {
     const getEmployees = async () => {
       try {
-        const { data }  = await axios.get('http://dummy.restapiexample.com/api/v1/employees')
+        const { data }  = await axios.get('https://dummy.restapiexample.com/api/v1/employees')
         setEmployees(data.data)
       } catch (err) {
-        setHasError(true)
+        if (err.message) {
+          setHasError('')
+          setHasError(err.message + ' - Cannot get employees data. Keep refreshing your browser!')
+        }
       }
     }
     getEmployees()
   }, [])
 
   const editHandle = (id, name, age, salary) => {
+    
+    // Clear all notifications
+    setSuccess('')
+    setHasError('')
+    setDeleteStatus(0)
+
+
     setEmployee({ 'id': id, 'name': name, 'age': age, 'salary': salary })
   }
 
   const deleteHandle = (id) => {
+    // Clear all notifications
+    setSuccess('')
+    setHasError('')
+    setDeleteStatus(0)
+    
     setDelete(id)
   }
 
@@ -66,11 +81,31 @@ const Manager = () => {
 
   useEffect(() => {
     const getData = async () => {
+      try {
+        if (typeof(employee.id) !== 'string') {
+          const { data } = await axios.get(`https://dummy.restapiexample.com/api/v1/employee/${employee.id}`)
+          
+          //Reset error notification
+          setHasError('')
 
-      const { data } = await axios.get(`http://dummy.restapiexample.com/api/v1/employee/${employee.id}`)
+          // Data successfully retrieved
+          setSuccess('Retrieved data')
 
-      console.log('Employee=>', data.data)
-      setEmployeeData(data.data)
+          //Set retrieved data to employeeData object
+          setEmployeeData(data.data)
+        }
+      } catch (err) {
+        if (err.message) {
+
+          // Clear form data
+          const data = { employee_name: '', employee_salary: '', employee_age: '' }
+          setEmployeeData(data)
+
+          //Notify user there is an error
+          setHasError(err.message + ' - Cannot get employee data. Choose another one!')
+          setSuccess('')
+        }
+      }
     }
     getData()
   }, [employee.id])  
@@ -86,29 +121,57 @@ const Manager = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.put(
-        `http://dummy.restapiexample.com/api/v1/update/${employee.id}`,
-        employeeData
+      const result = await axios.put(
+        `https://dummy.restapiexample.com/api/v1/update/${employee.id}`,
+        JSON.stringify(employeeData)
       )
+      
+      if (result.status === 200) {
+        //Set form back to default
+        const data = { employee_name: '', employee_salary: '', employee_age: '' }
+        setEmployeeData(data)
 
-      //history.push('/manager')
+        // Remove error message
+        setHasError('')
+
+        // Notify user update is successful
+        setSuccess(`You have successfully updated ${employeeData.employee_name}'s record`)
+      }
     } catch (err) {
-      console.log('Error=>', err)
-      setErrors(err)
+      if (err.message) {
+        //Notify user record cannot be updated
+        setHasError('Cannot update - ' + err.message + '. Keep submitting!')
+
+        //Remove previously set successful entry notification - incase it was tried multiple times
+        setSuccess('')
+      }
     }
   }
 
   const handleDelete = (event) => {
-    console.log('changed=>', event.target.value)
+
     const getDelete = async () => {
-      const { data } = await axios.delete(`http://dummy.restapiexample.com/api/v1/delete/${event.target.value}`)
-      console.log('MYDATA', data)
-      if (data.status === 'success') {
-        setDeleteStatus(1)
-        const { data } = await axios.get('http://dummy.restapiexample.com/api/v1/employees')
-        console.log('RESULT', data)
-        setEmployees(data.data)
-      }
+      try {
+        const { data } = await axios.delete(`https://dummy.restapiexample.com/api/v1/delete/${event.target.value}`)
+
+        if (data.status === 'success') {
+          // Notify user deletion was successful
+          setHasError('')
+          setDeleteStatus(1)
+
+          // Update the user list - This will refresh the user list
+          //const { data } = await axios.get('https://dummy.restapiexample.com/api/v1/employees')
+          //setEmployees(data.data)
+        }
+      } catch (err) {
+        if (err.message) {
+          //Notify user record cannot be deleted
+          setHasError('Cannot delete user - ' + err.message + '. Keep submitting!')
+  
+          //Remove previously set successful deletion - incase it was tried multiple times
+          setDeleteStatus(0)
+        }
+      }  
     }
     getDelete()
   }
@@ -149,7 +212,7 @@ const Manager = () => {
                   <tbody>
                     <tr>
                       <td className="title has-text-centered">
-                        {hasError ? 'No employee data!' : 'loading employees...'}
+                        {hasError ? hasError : 'loading employees...'}
                       </td>
                     </tr>  
                   </tbody>  
@@ -164,15 +227,14 @@ const Manager = () => {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           buttonText="Update Employee"
-          // id={employee.id} 
-          // name={employee.name} 
-          // age={employee.age} 
-          // salary={employee.salary}
+          success={success}
+          hasError={hasError}
         />
         <Delete 
           handleDelete={handleDelete} 
           deleteId={deleteId}
           deleteStatus={deleteStatus}
+          hasError={hasError}
         />
         <Create />
       </div>

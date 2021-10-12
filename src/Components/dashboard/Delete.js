@@ -4,6 +4,7 @@ const Delete = ({
   handleDelete,
   deleteId,
   deleteStatus,
+  hasError,
 }) => {
 
   return (
@@ -21,7 +22,17 @@ const Delete = ({
                 :
                 ''
               }
-              Are you sure you want to delete this employee?
+              { hasError ?
+                <div className='alert alert-danger'>{hasError}</div>
+                :
+                ''
+              }
+                
+              {deleteStatus === 0 ? 
+                <span>Are you sure you want to delete this employee!</span>
+                :
+                ''
+              }
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>

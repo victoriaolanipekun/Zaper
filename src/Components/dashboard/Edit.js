@@ -6,6 +6,8 @@ const Edit = ({
   errors,
   handleChange,
   handleSubmit,
+  success,
+  hasError,
   buttonText = 'Submit',  
 }) => {
 
@@ -20,6 +22,17 @@ const Edit = ({
                 <button type='button' className='btn-close' data-dismiss='modal' aria-label='Close'></button>
               </div>
               <div className='modal-body'>
+                { hasError ?
+                  <div className='alert alert-danger'>{hasError}</div>
+                  :
+                  ''
+                }
+                { success ?
+                  <div className='alert alert-success'>{success}</div>
+                  :
+                  ''
+                }
+
                 <input 
                   className={`input ${errors ? 'is-danger' : ''} form-control`} 
                   type='text' 

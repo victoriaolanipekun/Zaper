@@ -20,12 +20,12 @@ const Register = () => {
               <div className='email'><hr/>Or, Sign up with your email</div>
               <div className='formInput'>
                 <div className='input'>
-                  <input type='text' name='name' className='form-control' placeholder='First Name' value='' />
-                  <input type='text' name='salary' className='form-control' placeholder='Last Name' value=''/>
+                  <input type='text' name='first_name' className='form-control' placeholder='First Name' />
+                  <input type='text' name='last_name' className='form-control' placeholder='Last Name' />
                 </div>
-                <input type='text' name='name' className='form-control' placeholder='Work Email' value='' />
-                <input type='text' name='salary' className='form-control' placeholder='Company Website' value=''/>
-                <input type='text' name='salary' className='form-control' placeholder='Password' value=''/>
+                <input type='email' name='email' className='form-control' placeholder='Work Email' />
+                <input type='text' name='website' className='form-control' placeholder='Company Website' />
+                <input type='password' name='password' className='form-control' placeholder='Password' />
               </div>
               <Link to='/login'><button className="signup_btn" type="button">Sign up</button></Link>
             </div>

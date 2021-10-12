@@ -20,8 +20,8 @@ const Login = () => {
               <button className="btn" type="button">Log in With Google</button>
               <div className='email'><hr/>Or, Log in with your email</div>
               <div className='formInput'>
-                <input type='text' name='name' className='form-control' placeholder='Email' value='' />
-                <input type='text' name='salary' className='form-control' placeholder='Password' value=''/>
+                <input type='text' name='email' className='form-control' placeholder='Email' />
+                <input type='password' name='password' className='form-control' placeholder='Password' />
                 <h5>
                   <a href="#">Forgot Password?</a>
                 </h5>
