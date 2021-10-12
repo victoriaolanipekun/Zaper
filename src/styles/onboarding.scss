@@ -116,25 +116,30 @@ html, body {
       .team {
         top: 120px;
       }
+
       .member { 
         .btn {
           flex-direction: column;
           padding: inherit;
           margin-top: 10px;      
         }
+
         h4 {
         text-align: center;
         }
+
         button {
           height: 63px;
           margin-bottom: 10px;
         }
       }
     }
+
     .testimonial {
       .quote {
         top: 509px;
       }
+      
       h4 {
         margin-top: 260px;
       }

@@ -116,6 +116,55 @@ $width: 576px;
 
 @media (max-width: 576px) {
   .home {
-    width: 675px;
+    .header {
+      .header-text-section {
+        margin-top: -680px;
+        padding-left: 0px;
+        text-align: center;
+      }
+        
+      .hero {
+        margin-left: -15px;
+        img {
+          width: 100%;
+          margin-top: 300px;
+        }
+      }
+
+      h4 {
+        font-size: 12px;
+        line-height: 16px;
+        span {
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 39px;
+      }
+
+      h1 {
+        font-size: 42px;
+        line-height: 55px;
+      }
+
+      .get-started {
+        width: 180px;
+        height: 46px;
+        font-size: 14px;
+        line-height: 18px;
+        margin-top: 15px;
+      }
+
+      .bg_img {   
+        margin-top: 389px;
+        margin-right: -15px;
+        img {
+          width: 20%;
+        }
+      }
+    }
   }
 }
