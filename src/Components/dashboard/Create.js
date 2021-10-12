@@ -65,9 +65,9 @@ const Create = () => {
                   ''
                 }
 
-                <input type='text' name='name' className='form-control' placeholder='Enter employee name' value={formData.name} onChange={handleChange} />
-                <input type='number' name='salary' className='form-control' placeholder='Enter salary' value={formData.salary} onChange={handleChange} />
-                <input type='number' name='age' className='form-control' placeholder='Enter age' value={formData.age} onChange={handleChange} />
+                <input type='text' name='name' className='form-control' placeholder='Enter employee name' value={formData.name} onChange={handleChange} required='required' />
+                <input type='number' name='salary' className='form-control' placeholder='Enter salary' value={formData.salary} onChange={handleChange} required='required' />
+                <input type='number' name='age' className='form-control' placeholder='Enter age' value={formData.age} onChange={handleChange} required='required' />
               </div>  
               <div className='modal-footer'>
                 <button type='button' className='btn btn-secondary' data-dismiss='modal'>Close</button>

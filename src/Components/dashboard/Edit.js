@@ -41,6 +41,7 @@ const Edit = ({
                   placeholder='Enter employee name' 
                   value={employeeData.employee_name}
                   onChange={handleChange} 
+                  required='required'
                 />
 
                 <input 
@@ -51,6 +52,7 @@ const Edit = ({
                   placeholder='Enter salary' 
                   value={employeeData.employee_salary} 
                   onChange={handleChange} 
+                  required='required'
                 />
 
                 <input 
@@ -61,6 +63,7 @@ const Edit = ({
                   placeholder='Enter age' 
                   value={employeeData.employee_age} 
                   onChange={handleChange} 
+                  required='required'
                 />
               </div>  
               <div className='modal-footer'>
