@@ -3,6 +3,12 @@ html, body {
   width: 100%;
   background: #EDE3E3;
 }
+@mixin mobile {
+  @media (max-width: #{$width}) {
+    @content
+  }
+};
+
 
 .login {
 
@@ -182,6 +188,39 @@ html, body {
 
           a {
             font-weight: 800;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .login {
+    .log {
+      .styling {
+        display: none;
+      }
+      .bottomStyling {
+        display: none;
+      }
+      .start {
+        .getStarted {
+          width: 314px;
+          .btn {
+            width: 265px;
+          }
+          .google {
+            .email {
+              margin-left: 0;
+              hr {
+                margin-left: 0;
+              }
+            }
+            .log_btn {
+              width: 265px;
+            }
           }
         }
       }
