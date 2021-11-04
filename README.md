@@ -1,5 +1,7 @@
 # Zaper
 
+Zaper is an app I prototyped, designed and developed consuming a public API. I paticularly enjoyed this project as it allowed me explore my error handling skills as the API had some restrictions like CORS POLICY. 
+
 Explore the app here - https://zaperhq.herokuapp.com/
 
 ## Using NPM
