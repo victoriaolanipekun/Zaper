@@ -1,5 +1,7 @@
 # Zaper
 
+Explore the app here - https://zaperhq.herokuapp.com/
+
 ## Using NPM
 
 `yarn start` or `yarn dev`  to run the development server
